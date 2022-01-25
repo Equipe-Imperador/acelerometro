@@ -29,7 +29,7 @@ void setup(void) {
   }
   arquivo = SD.open("log.txt", FILE_WRITE);
   //cabeçalho do arquivo
-  arquivo.println("aceleração x;aceleração y;aceleração z;velocidade angular x;velocidade angular y;velocidade angular z;tempo");
+  arquivo.println("aceleração x,aceleração y,aceleração z,velocidade angular x,velocidade angular y,velocidade angular z,tempo");
   arquivo.close();
     
   mpu.setAccelerometerRange(MPU6050_RANGE_2_G);
@@ -44,17 +44,17 @@ void loop() {
   
   arquivo = SD.open("log.txt", FILE_WRITE);
   arquivo.print(a.acceleration.x);
-  arquivo.print(";");
+  arquivo.print(",");
   arquivo.print(a.acceleration.y);
-  arquivo.print(";");
+  arquivo.print(",");
   arquivo.print(a.acceleration.z);
-  arquivo.print(";");
+  arquivo.print(",");
   arquivo.print(g.gyro.x);
-  arquivo.print(";");
+  arquivo.print(",");
   arquivo.print(g.gyro.y);
-  arquivo.print(";");
+  arquivo.print(",");
   arquivo.print(g.gyro.z);
-  arquivo.print(";");
+  arquivo.print(",");
   tempo = millis();
   arquivo.print(tempo/1000);
   arquivo.println();
@@ -62,15 +62,15 @@ void loop() {
 
   /*
   Serial.print(a.acceleration.x);
-  Serial.print(";");
+  Serial.print(",");
   Serial.print(a.acceleration.y);
-  Serial.print(";");
+  Serial.print(",");
   Serial.print(a.acceleration.z);
-  Serial.print(";");
+  Serial.print(",");
   Serial.print(g.gyro.x);
-  Serial.print(";");
+  Serial.print(",");
   Serial.print(g.gyro.y);
-  Serial.print(";");
+  Serial.print(",");
   Serial.print(g.gyro.z);
   Serial.println();
   */
